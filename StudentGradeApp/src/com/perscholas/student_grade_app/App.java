@@ -1,6 +1,7 @@
 package com.perscholas.student_grade_app;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -66,9 +67,8 @@ public class App {
 				}
 					
 			} else if(input.contentEquals("2")) {
-				System.out.println("Enter a student's name: ");
+				menu.requestStudentName();
 				String studentName = s.nextLine();
-				System.out.println("We are entering grades for " + studentName);
 				
 				Path path = Paths.get(studentName + ".txt");
 				String filePath = studentName + ".txt";
@@ -89,21 +89,17 @@ public class App {
 						fileWriter.newLine();
 						fileWriter.write(jspGrade);
 						
-						
 						//3. Get SQL Grade
 						menu.requestGrade(studentName, "SQL");
 						String sqlGrade = s.nextLine();
 						fileWriter.newLine();
-						fileWriter.write(sqlGrade);
-						
+						fileWriter.write(sqlGrade);	
 						
 						//4. Get JUNIT Grade
 						menu.requestGrade(studentName, "JUNIT");
-//						System.out.println("What numerical grade did " + studentName + "get in JUNIT?");
 						String junitGrade = s.nextLine();
 						fileWriter.newLine();
 						fileWriter.write(junitGrade);
-						
 						
 						fileWriter.close();
 					} catch(IOException e) {
@@ -113,14 +109,23 @@ public class App {
 					System.out.println("This student does not have an account. Please create an account first.");
 					System.out.println("");
 				}
-				
-				//1. We need to open the file using the student name
-				//2. Then we need to ask the user for input for each subject
-				//3. Append each score to the file - this will happen 4 times
-				
-				
 			} else if(input.contentEquals("3")) {
-				System.out.println("Inside of 2nd else if");
+				//1. we have to get all the names of the files in our directory - use a loop
+				File fileDir = new File("/Users/desmond/git/studentgradeapp/StudentGradeApp/src");
+				File[] fileList = fileDir.listFiles();
+				for(File name : fileList) {
+					if(name.isDirectory()) {
+						System.out.println("Our dir is: " + name.getName());
+					} else {
+						System.out.println("File is: " + name.getName());
+					}
+				}
+				
+				//2. Then we open each one and get the 4 numbers; use their common positions 
+				//3. We can probably add it to a SUM variable while we loop thru all 4 numbs
+				//4. At the end of the loop, we can divide by 4 and we add it to an array list which will have our avgs for every student
+				//5. Finally, we loop thru our DOUBLE array list and add it to another SUM variable
+				//6. Then we divide it by the total length of array list
 			} else if(input.contentEquals("4")) {
 				System.out.println("Inside of 3rd else if");
 			}
