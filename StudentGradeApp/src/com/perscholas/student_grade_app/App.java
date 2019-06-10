@@ -79,27 +79,27 @@ public class App {
 						BufferedWriter fileWriter = new BufferedWriter(new FileWriter(filePath, true));
 						//1. Get Java Grade
 						menu.requestGrade(studentName, "Java");
-//						System.out.println("What numerical grade did " + studentName + " get in Java?");
 						String javaGrade = s.nextLine();
 						fileWriter.newLine();
 						fileWriter.write(javaGrade);
 						
 						//2. Get JSP Grade
-						System.out.println("What numerical grade did " + studentName + "get in JSP?");
+						menu.requestGrade(studentName, "JSP");
 						String jspGrade = s.nextLine();
 						fileWriter.newLine();
 						fileWriter.write(jspGrade);
 						
 						
 						//3. Get SQL Grade
-						System.out.println("What numerical grade did " + studentName + "get in SQL?");
+						menu.requestGrade(studentName, "SQL");
 						String sqlGrade = s.nextLine();
 						fileWriter.newLine();
 						fileWriter.write(sqlGrade);
 						
 						
 						//4. Get JUNIT Grade
-						System.out.println("What numerical grade did " + studentName + "get in JUNIT?");
+						menu.requestGrade(studentName, "JUNIT");
+//						System.out.println("What numerical grade did " + studentName + "get in JUNIT?");
 						String junitGrade = s.nextLine();
 						fileWriter.newLine();
 						fileWriter.write(junitGrade);
